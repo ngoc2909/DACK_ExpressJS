@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>SB Admin - Start Bootstrap Template</title>
+    <!-- Bootstrap core CSS-->
+    <link href="admin-file/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+    <link href="admin-file/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Page level plugin CSS-->
+    <link href="admin-file/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="admin-file/css/sb-admin.css" rel="stylesheet">
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+<% include ../admin/admin.ejs %>
+!-- Create Modal add -->
+<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add new celebrity</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <span>Image link</span><input name="imagelink" id="image-link"><br>
+                <span>Name</span><input name="name" id="name"><br>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="add-banhang">Add</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Create Modal delete-->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="Delete-Modal">Delete</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <span class="badge badge-warning">Are you sure you want to delete?</span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" id="btnDelete" delete-id ="#">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Update Modal -->
+<!--================================================== -->
+<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="Update-Modal">Update a celebrity</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="update-name" name="name">
+                </div>
+                <div class="form-group">
+                    <label for="image-link">Image link</label>
+                    <input type="text" class="form-control" name="imagelink" id="update-image-link">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id ="btnUpdate"  update-id ="#">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="#">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active">Tables</li>
+        </ol>
+        <!-- Example DataTables Card-->
+        <h1>Danh Sách Loại Sản Phẩm </h1>
+        <p>
+            <a href="#" class="btn btn-primary my-2" data-toggle="modal" data-target="#createModal">Thêm mới loại sản phẩm</a>
+        </p>
+        <div class="album py-5 bg-light">
+            <div class="container">
+
+                <div class="row" id="banhang-group">
+
+                </div>
+            </div>
+        </div>
+
+        <!-- /.container-fluid-->
+        <!-- /.content-wrapper-->
+        <footer class="sticky-footer">
+            <div class="container">
+                <div class="text-center">
+                    <small>Copyright © Your Website 2018</small>
+                </div>
+            </div>
+        </footer>
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fa fa-angle-up"></i>
+        </a>
+        <!-- Logout Modal-->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-primary" href="login.html">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Bootstrap core JavaScript-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+                integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+                crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+    </div>
+    <div class="card mb-3">
+        <script id="banhang-template" type="text/x-handlebars-template">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <tr>
+                            <th>Mã Loại </th>
+                            <th>Image-url</th>
+                            <th>Tên Sản Phẩm</th>
+                            <th>Chức năng</th>
+
+                        </tr>
+                        <tr>
+                            <td>{{ malsp}}</td>
+                            <td><img class="card-img-top" src="{{ image_url}}">
+                            </td>
+                            <td>
+                                <p>{{ name}}</p>
+                            </td>
+                            <td>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn btn-info update-celebrity-class"  value ="{{id}}">Edit</button>
+                                    <button type="button" class="btn btn-sm btn btn-danger delete-celebrity-class" value ="{{id}}" >Delete</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </script>
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+    </div>
+</div>
+<script>
+    var source = document.getElementById("banhang-template").innerHTML;
+    var template = Handlebars.compile(source);
+    refresh();
+    $('#add-banhang').on(
+            'click',
+            function (evt) {
+                $.ajax({
+                    type: "POST",
+                    url: "api/loaisanpham",
+                    data: JSON.stringify({
+                        image_url: $("#image-link").val(),
+                        name: $("#name").val()
+                    }),
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                        refresh();
+                    }
+                });
+            }
+    );
+    $(document).on('click', '.delete-celebrity-class',function (evt){
+        var id = $(this).attr("value");
+        $("#btnDelete").attr("delete-id", id);
+        $("#deleteModal").modal('toggle');
+
+    });
+
+    $('#btnDelete').on('click', function (evt) {
+
+        var id = $(this).attr("delete-id");
+        $.ajax({
+            type: "DELETE",
+            url: "api/loaisanpham/" + id,
+            success: function (data) {
+                refresh();
+            }
+        });
+    });
+
+
+    $(document).on('click', '.update-celebrity-class',function (evt){
+        var id = $(this).attr("value");
+
+        $.ajax({
+            type: "GET",
+            url: "api/loaisanpham/"+id,
+            success : function(data){
+                $('#update-name').val(data[0].name);
+                $('#update-image-link').val(data[0].image_url);
+                $('#btnUpdate').attr("update-id",id);
+                $('#updateModal').modal('toggle');
+            }
+        });
+    });
+
+    $('#btnUpdate').on('click', function (evt) {
+
+        var id = $(this).attr("update-id");
+        $.ajax({
+            type: "PUT",
+            url: "api/loaisanpham/" + id,
+            data: JSON.stringify({
+                image_url: $("#iupdate-mage-link").val(),
+                name: $("#update-name").val()
+            }),
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                refresh();
+            }
+        });
+    });
+    function refresh(){
+        $.getJSON("api/loaisanpham", function (data) {
+            var items = "";
+            $.each(data, function (key, val) {
+                items += template(val);
+            });
+            $("#banhang-group").html(items);
+        });
+    }
+</script>
+</body>
+</html>
