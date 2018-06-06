@@ -11,4 +11,13 @@ router.get('/admin', function(req, res) {
 router.get('/QuanLySanPham',function (req,res) {
     res.render('./admin/QuanLySanPham');
 });
+router.get('/QuanLyLoaiSanPham', function (req, res) {
+    res.render('./admin/QuanLyLoaiSanPham');
+});
+router.get('/QuanLyNhaSanXuat', function (req, res) {
+    res.render('./admin/QuanLyNhaSanXuat');
+});
+router.get('/QuanLyTaiKhoan', function (req, res) {
+    res.render('./admin/QuanLyTaiKhoan');
+});
 module.exports = router;
